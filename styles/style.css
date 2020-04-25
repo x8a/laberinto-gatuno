@@ -1,0 +1,24 @@
+body {
+    padding: 0;
+    text-align: center;
+  }
+
+.game-intro {
+    float: left;
+    margin: 5% 5%;
+  }
+
+  .game-intro p {
+    font-size: 20px;
+    float: left;
+  }
+
+  #start-btn {
+    margin: 5% 5%;
+  }
+
+  canvas {
+    visibility: hidden;
+    background-color: darkgray;
+    margin-top: 5%;
+  }
