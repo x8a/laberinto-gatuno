@@ -37,3 +37,10 @@ The hero will find food 🍤 and distractions 🧶 in the labyrinth:
 ## BACKLOG
 - **User Story**: As a gamer I want the screen to turn red when I don't have much time ⏳ left so that I know that I have to hurry up.
 - **User Story**: As a gamer I want to have another labyrinth so that I can play if I finish the first labyrinth.
+
+## LINKS
+### Git repo
+tbd
+### Slides
+tbd
+### [Kanban Board](https://trello.com/b/7bdzWw13/kanban-board)
