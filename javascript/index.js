@@ -1,12 +1,11 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-
 const cat = {
     img: null,
     x: 0,
     y: 0,
-    speed: 5,
+    speed: 10,
     width: 50,
     height: 50,
     loadImg: function() {
@@ -66,6 +65,18 @@ function pressKey(event) {
     if(event.code == "ArrowDown") {
         cat.y += cat.speed;
     }
+
+    if(cat.x >= canvas.width - 50) {
+      cat.x = canvas.width - 50;
+    } else if (cat.x <= 0) {
+      cat.x = 0;
+    }
+    if (cat.y <= 0) {
+      cat.y = 0;
+    } else if(cat.y >= canvas.height - 50) {
+      cat.y = canvas.height - 50;
+    }
+
     updateCanvas();
 }
 
