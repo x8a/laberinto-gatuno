@@ -18,7 +18,7 @@ body {
   }
 
   canvas {
-    visibility: hidden;
-    background-color: darkgray;
     margin-top: 5%;
+    visibility: hidden;
+    background-image: url("../img/lab.jpg");
   }
