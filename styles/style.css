@@ -8,17 +8,21 @@ body {
     margin: 5% 5%;
   }
 
-  .game-intro p {
-    font-size: 20px;
-    float: left;
-  }
+.game-intro p {
+  font-size: 20px;
+  float: left;
+}
 
-  #start-btn {
-    margin: 5% 5%;
-  }
+#start-btn {
+  margin: 5% 5%;
+}
 
-  canvas {
-    margin-top: 5%;
-    visibility: hidden;
-    background-image: url("../img/lab.jpg");
-  }
+#timer {
+
+}
+
+canvas {
+  margin-top: 5%;
+  visibility: hidden;
+  background-image: url("../img/lab.jpg");
+}

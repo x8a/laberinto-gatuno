@@ -1,5 +1,7 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+const gameIntro = document.querySelector(".game-intro");
+const myTimerDiv = `<div id="timer">MY TIMER</div>`
 
 const cat = {
     img: null,
@@ -54,8 +56,32 @@ let labyrinth = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] // 18
   ];
 
+let myCountdown;
+let sec = 90;
+
+let counting = () => {
+  let min = Math.floor(sec / 60);
+  let mySec;
+
+  if(sec >= 60) {
+    mySec = sec - 60;
+  } else if(sec <= 60) {
+    mySec = sec;
+  }
+  
+  console.log(`TIME LEFT ${min}: ${mySec}`);
+  sec--;
+  if(sec == 0) {
+    clearInterval(myCountdown);
+  }
+}
+
+//myCountdown = setInterval(counting, 1000);
+
+
+
 function startGame() {
-  document.getElementById("start-btn").style.visibility = "hidden";
+  gameIntro.innerHTML = myTimerDiv;
 
   // Closing gaps
   ctx.fillStyle = "#F7B500";
@@ -68,6 +94,7 @@ function startGame() {
 
 function updateCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
   // Closing gaps
   ctx.fillStyle = "#F7B500";
   ctx.fillRect(330, 240, 30, 30);
@@ -78,16 +105,33 @@ function updateCanvas() {
 }
 
 function pressKey(event) {
-    if(event.code == "ArrowRight") {
+
+  function checkCollision(direction) {
+    let position;
+    
+    if(direction == "right") {
+      position = labyrinth[cat.y / cat.speed][(cat.x + 30) / cat.speed];
+    } else if(direction == "left") {
+      position = labyrinth[cat.y / cat.speed][(cat.x - 30) / cat.speed];
+    } else if(direction == "up") {
+      position = labyrinth[(cat.y - 30) / cat.speed][cat.x / cat.speed];
+    } else if(direction == "down") {
+      position = labyrinth[(cat.y + 30) / cat.speed][cat.x / cat.speed];
+    }
+
+    return position;
+  }
+
+    if(event.code == "ArrowRight" && checkCollision("right")) {
       cat.x += cat.speed;
     }
-    if(event.code == "ArrowLeft") {
+    if(event.code == "ArrowLeft" && checkCollision("left")) {
       cat.x -= cat.speed;
     }
-    if(event.code == "ArrowUp") {
+    if(event.code == "ArrowUp" && checkCollision("up")) {
         cat.y -= cat.speed;
     }
-    if(event.code == "ArrowDown") {
+    if(event.code == "ArrowDown" && checkCollision("down")) {
         cat.y += cat.speed;
     }
 
