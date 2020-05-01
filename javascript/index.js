@@ -1,95 +1,29 @@
+"use strict";
+
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const gameIntro = document.querySelector(".game-intro");
-const myTimerDiv = `<div id="timer">MY TIMER</div>`
+const myTimerDiv = `<div id="timer" class="btn btn-lg bg-danger text-white justify-content-center">TIME LEFT</div>`;
+let cat = new Cat();
+let box = new Box(canvas);
 
-const cat = {
-    img: null,
-    x: 30,
-    y: 0,
-    speed: 30,
-    size: 40,
-    loadImg: function() {
-      this.img = new Image();
-      this.img.src = "img/hero.png";
-      this.img.onload = () => {
-        ctx.drawImage(this.img, this.x, this.y, this.size, this.size);
-      }
-    }
-  }
-
-const box = {
-    img: null,
-    x: canvas.width - 50,
-    y: canvas.height - 70,
-    width: 50,
-    height: 40,
-    loadImg: function() {
-      this.img = new Image();
-      this.img.src = "img/box.png";
-      this.img.onload = () => {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-      }
-   }
-}
-
-let labyrinth = [
-  //   0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5  6  7  18
-      [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],// 0
-      [0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],// 1
-      [0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0],// 2
-      [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0],// 3
-      [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0],// 4
-      [0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0],// 5
-      [0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0],// 6
-      [0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0],// 7
-      [0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],// 8 
-      [0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0],// 9
-      [0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0],// 10
-      [0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0],// 11
-      [0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0],// 12 
-      [0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0],// 13
-      [0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],// 14
-      [0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0],// 15
-      [0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],// 16
-      [0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1],// 17 --> BOX (18, 17)
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] // 18
-  ];
-
-let myCountdown;
-let sec = 90;
-
-let counting = () => {
-  let min = Math.floor(sec / 60);
-  let mySec;
-
-  if(sec >= 60) {
-    mySec = sec - 60;
-  } else if(sec <= 60) {
-    mySec = sec;
-  }
-  
-  console.log(`TIME LEFT ${min}: ${mySec}`);
-  sec--;
-  if(sec == 0) {
-    clearInterval(myCountdown);
-  }
-}
-
-//myCountdown = setInterval(counting, 1000);
-
-
+//Obstacles
+let shrimp = new Shrimp(450, 30);
+let yarn = new Yarn(90, 270);
 
 function startGame() {
   gameIntro.innerHTML = myTimerDiv;
+  myCountdown = setInterval(counting, 1000);
 
   // Closing gaps
   ctx.fillStyle = "#F7B500";
   ctx.fillRect(330, 240, 30, 30);
   ctx.fillRect(300, 510, 30, 30);    
 
-  cat.loadImg();
-  box.loadImg();    
+  cat.loadImg(); 
+  box.loadImg();
+  shrimp.loadImg();
+  yarn.loadImg();
 }
 
 function updateCanvas() {
@@ -100,8 +34,10 @@ function updateCanvas() {
   ctx.fillRect(330, 240, 30, 30);
   ctx.fillRect(300, 510, 30, 30); 
 
-  ctx.drawImage(cat.img, cat.x, cat.y, cat.size, cat.size);
-  ctx.drawImage(box.img, box.x, box.y, box.width, box.height);
+  cat.draw(); 
+  box.draw();
+  shrimp.draw();
+  yarn.draw();
 }
 
 function pressKey(event) {
@@ -147,8 +83,15 @@ function pressKey(event) {
     }
 
     updateCanvas();
+
+    if(gameOver) {
+      console.log("You're a winner baby");
+    }
 }
 
+function gameOver() {
+  return cat.x === box.x && cat.y === box.y;
+}
 
 window.onload = () => {
     document.getElementById('start-btn').onclick = () => {

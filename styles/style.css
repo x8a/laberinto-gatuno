@@ -4,13 +4,11 @@ body {
   }
 
 .game-intro {
-    float: left;
     margin: 5% 5%;
   }
 
-.game-intro p {
+.intro p {
   font-size: 20px;
-  float: left;
 }
 
 #start-btn {
@@ -18,11 +16,12 @@ body {
 }
 
 #timer {
-
+  height: 100px;
+  width: 150px;
+  float: left;
 }
 
 canvas {
-  margin-top: 5%;
   visibility: hidden;
   background-image: url("../img/lab.jpg");
 }
