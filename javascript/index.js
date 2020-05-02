@@ -1,16 +1,3 @@
-"use strict";
-
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
-const gameIntro = document.querySelector(".game-intro");
-const myTimerDiv = `<div id="timer" class="btn btn-lg bg-danger text-white justify-content-center">TIME LEFT</div>`;
-let cat = new Cat();
-let box = new Box(canvas);
-
-//Obstacles
-let shrimp = new Shrimp(450, 30);
-let yarn = new Yarn(90, 270);
-
 function startGame() {
   gameIntro.innerHTML = myTimerDiv;
   myCountdown = setInterval(counting, 1000);
@@ -22,8 +9,8 @@ function startGame() {
 
   cat.loadImg(); 
   box.loadImg();
-  shrimp.loadImg();
-  yarn.loadImg();
+  myShrimps.map(i => i.loadImg());
+  yarnBalls.map(i => i.loadImg());
 }
 
 function updateCanvas() {
@@ -36,27 +23,27 @@ function updateCanvas() {
 
   cat.draw(); 
   box.draw();
-  shrimp.draw();
-  yarn.draw();
+  myShrimps.map(i => i.draw());
+  yarnBalls.map(i => i.draw());
+}
+
+function checkCollision(direction) {
+  let position;
+  
+  if(direction == "right") {
+    position = labyrinth[cat.y / cat.speed][(cat.x + 30) / cat.speed];
+  } else if(direction == "left") {
+    position = labyrinth[cat.y / cat.speed][(cat.x - 30) / cat.speed];
+  } else if(direction == "up") {
+    position = labyrinth[(cat.y - 30) / cat.speed][cat.x / cat.speed];
+  } else if(direction == "down") {
+    position = labyrinth[(cat.y + 30) / cat.speed][cat.x / cat.speed];
+  }
+  
+  return position;  
 }
 
 function pressKey(event) {
-
-  function checkCollision(direction) {
-    let position;
-    
-    if(direction == "right") {
-      position = labyrinth[cat.y / cat.speed][(cat.x + 30) / cat.speed];
-    } else if(direction == "left") {
-      position = labyrinth[cat.y / cat.speed][(cat.x - 30) / cat.speed];
-    } else if(direction == "up") {
-      position = labyrinth[(cat.y - 30) / cat.speed][cat.x / cat.speed];
-    } else if(direction == "down") {
-      position = labyrinth[(cat.y + 30) / cat.speed][cat.x / cat.speed];
-    }
-
-    return position;
-  }
 
     if(event.code == "ArrowRight" && checkCollision("right")) {
       cat.x += cat.speed;
@@ -81,23 +68,46 @@ function pressKey(event) {
     } else if(cat.y >= canvas.height - 40) {
       cat.y = canvas.height - 40;
     }
-
     updateCanvas();
 
-    if(gameOver) {
-      console.log("You're a winner baby");
+    extraTime(myShrimps);
+    wasteTime(yarnBalls);
+
+    if(winner()) {
+      clearInterval(myCountdown);
+      main.innerHTML = 
+      `
+      <div class="game-intro">
+        <h1>WINNER</h1>
+        <img src="./img/boxNap.gif" alt="Cat in a box">
+        <br>
+        <br>
+        <button id="start-btn" class="btn bg-dark text-white btn-lg">RESTART</button>
+      </div>
+      `
     }
 }
 
-function gameOver() {
+function winner() {
   return cat.x === box.x && cat.y === box.y;
 }
 
-window.onload = () => {
-    document.getElementById('start-btn').onclick = () => {
-        canvas.style.visibility = "visible";
-        startGame();
-    };
+function gameOver() {
+  main.innerHTML = 
+      `
+      <div class="game-intro">
+        <h1 class="over">TIME'S UP</h1>
+        <img src="./img/salem.gif" alt="Salem smashing the piano">
+        <br>
+        <br>
+        <button id="start-btn" class="btn bg-dark text-white btn-lg">RESTART</button>
+      </div>
+      `
 }
+
+document.getElementById('start-btn').onclick = () => {
+  canvas.style.visibility = "visible";
+  startGame();
+};
 
 document.onkeydown = pressKey; 

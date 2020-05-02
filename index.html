@@ -11,21 +11,38 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/style.css">
   </head>
+  <style>
+    @font-face {
+      font-family: myTitleFont;
+      src: url("styles/FrostbiteBossFight.ttf");
+    }
+    @font-face {
+      font-family: gameOverFont;
+      src: url("styles/PixelEmulator.ttf");
+    }
+  </style>
   <body>
-    <div class="game-intro">
-      <div class="intro">
-          <h1>LABERINTO GATUNO</h1>
-          <p>Our tired cat needs your help to get to the box.</p>
-          <p>Only then can she find the rest she truly deserves.</p>
+    <main>
+      <div class="game-intro">
+        <div class="intro">
+            <h1>LABERINTO GATUNO</h1>
+            <p>Our tired cat needs your help to get to the box. Only then can she find the rest she truly deserves.</p>
+            <ul class="list">
+              <li>🍤 --> You get 10 extra seconds</li>
+              <li>🧶 --> You lose 10 seconds</li>
+            </ul>
+        </div>
+        <div class="intro">
+          <img src="./img/arrowKeys.png" alt="Arrow Keys" class="arrow-keys"/>
+        </div>
+        <div>
+          <button id="start-btn" class="btn bg-dark text-white btn-lg">START</button>
+        </div>
       </div>
-      <div class="intro">
-        <h4>Use the arrow keys to move.</h4>
-        <button id="start-btn" class="btn btn-primary btn-lg">Start Game</button>
+      <div id="game-board">
+        <canvas id="canvas" width="570" height="570"></canvas>
       </div>
-    </div>
-    <div id="game-board">
-      <canvas id="canvas" width="570" height="570"></canvas>
-    </div>
+    </main>
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

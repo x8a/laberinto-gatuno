@@ -3,22 +3,38 @@ body {
     text-align: center;
   }
 
+h1 {
+  font-family: myTitleFont;
+  font-size: 80px;
+}
+
 .game-intro {
-    margin: 5% 5%;
+    margin: 50px;
   }
 
 .intro p {
   font-size: 20px;
 }
 
-#start-btn {
-  margin: 5% 5%;
+.list {
+  list-style-type: none;
+  font-size: 20px;
+  text-align: center;
 }
 
-#timer {
-  height: 100px;
+.arrow-keys {
+  width: 8%;
+}
+
+#start-btn {
+  height: 60px;
   width: 150px;
-  float: left;
+  font-size: 30px;
+  font-family: myTitleFont;
+}
+
+.over {
+  font-family: gameOverFont;
 }
 
 canvas {
