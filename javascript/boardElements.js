@@ -128,7 +128,7 @@ function extraTime(array) {
   for(let i = array.length - 1; i >= 0; i--) {
     if(array[i].x === cat.x && array[i].y === cat.y) {
         array.splice(i, 1);
-        sec += 6;
+        sec += 11;
     }
   }
 }
@@ -137,7 +137,7 @@ function wasteTime(array) {
   for(let i = array.length - 1; i >= 0; i--) {
     if(array[i].x === cat.x && array[i].y === cat.y) {
         array.splice(i, 1);
-        sec = sec - 4;
+        sec = sec - 9;
     }
   }
 }
