@@ -14,9 +14,9 @@ class Game {
   startGame() {
     this.cat = new Cat();
     this.box = new Box();
-    this.shrimp = new Shrimp(450, 30);
+    this.shrimp = new Shrimp(90, 30);
     this.shrimp2 = new Shrimp(30, 510);
-    this.yarn = new Yarn(90, 300);
+    this.yarn = new Yarn(90, 330);
     this.yarn2 = new Yarn(300, 390);
 
     this.myShrimps.push(this.shrimp);
@@ -24,6 +24,7 @@ class Game {
   
     this.yarnBalls.push(this.yarn);
     this.yarnBalls.push(this.yarn2);
+
     myCountdown = setInterval(counting, 1000);
 
     this.ctx.fillStyle = "#F7B500";

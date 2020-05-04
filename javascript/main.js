@@ -34,7 +34,7 @@ function gameScreen() {
     `;
     const mainCanvas = document.querySelector('canvas');
     const myGame = new Game(mainCanvas);
-
+    sec = 30;
     myGame.startGame();
     
     function pressKey(event) {
@@ -76,7 +76,13 @@ function gameScreen() {
             for(let i = array.length - 1; i >= 0; i--) {
               if(array[i].x === myGame.cat.x && array[i].y === myGame.cat.y) {
                   array.splice(i, 1);
-                  sec = sec - 9;
+                  if(sec >= 10) {
+                    sec = sec - 9;
+                  } else if (sec <= 10) {
+                      sec = 0;
+                      clearInterval(myCountdown);
+                      gameOverScreen();
+                  }                  
               }
             }
           }

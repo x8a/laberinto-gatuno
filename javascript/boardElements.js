@@ -121,7 +121,7 @@ class Yarn {
 
 // Countdown
 let myCountdown;
-let sec = 30;
+let sec;
 
 let counting = () => {
   let min = Math.floor(sec / 60).toLocaleString(undefined, {minimumIntegerDigits: 2});
@@ -135,9 +135,6 @@ let counting = () => {
   }
   
   document.querySelector("#timer").innerHTML = `TIME LEFT ${min}:${mySec.toLocaleString(undefined, {minimumIntegerDigits: 2})}`;
-  if(sec === 0) {
-    clearInterval(myCountdown);
-    //gameOverScreen();
-  }
+
 }
 
