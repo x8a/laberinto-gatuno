@@ -79,7 +79,6 @@ function gameScreen() {
                   if(sec >= 10) {
                     sec = sec - 9;
                   } else if (sec <= 10) {
-                      sec = 0;
                       clearInterval(myCountdown);
                       gameOverScreen();
                   }                  

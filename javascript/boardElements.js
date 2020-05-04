@@ -135,6 +135,9 @@ let counting = () => {
   }
   
   document.querySelector("#timer").innerHTML = `TIME LEFT ${min}:${mySec.toLocaleString(undefined, {minimumIntegerDigits: 2})}`;
-
+  if(sec === 0) {
+    clearInterval(myCountdown);
+    gameOverScreen();
+  }
 }
 
