@@ -9,10 +9,10 @@ h1 {
 }
 
 .game-intro {
-    margin: 50px;
+    margin-top: 150px;
   }
 
-.intro p {
+.game-intro p {
   font-size: 20px;
 }
 
@@ -20,6 +20,10 @@ h1 {
   list-style-type: none;
   font-size: 20px;
   text-align: center;
+}
+
+.icon {
+  width: 2.5em;
 }
 
 .arrow-keys {
@@ -33,11 +37,17 @@ h1 {
   font-family: myTitleFont;
 }
 
+#timer {
+  font-family: myTitleFont; 
+  font-size: 30px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
 .over {
   font-family: gameOverFont;
 }
 
 canvas {
-  visibility: hidden;
   background-image: url("../img/lab.jpg");
 }
