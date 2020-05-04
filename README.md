@@ -41,6 +41,5 @@ The hero will find food 🍤 and distractions 🧶 in the labyrinth:
 ## LINKS
 ### Git repo
 tbd
-### Slides
-tbd
+### [Slides](https://docs.google.com/presentation/d/1BSF9atbngOrqXo2leAptYECwEaob4psH3zkSSJsrL60/edit#slide=id.p)
 ### [Kanban Board](https://trello.com/b/7bdzWw13/kanban-board)
