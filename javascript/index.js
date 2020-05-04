@@ -28,7 +28,7 @@ class Game {
     myCountdown = setInterval(counting, 1000);
 
     this.ctx.fillStyle = "#F7B500";
-    this.ctx.fillRect(330, 240, 30, 30);
+    this.ctx.fillRect(325, 240, 45, 30);
     this.ctx.fillRect(300, 510, 30, 30);    
   
     this.cat.loadImg(); 
@@ -40,7 +40,7 @@ class Game {
     this.ctx.clearRect(0, 0, canvas.width, canvas.height);
     // Closing gaps
     this.ctx.fillStyle = "#F7B500";
-    this.ctx.fillRect(330, 240, 30, 30);
+    this.ctx.fillRect(325, 240, 45, 30);
     this.ctx.fillRect(300, 510, 30, 30); 
   
     this.cat.draw(); 

@@ -1,33 +1,65 @@
 body {
-    padding: 0;
-    text-align: center;
-  }
+  background-image: url("../img/dots.png");
+}
 
 h1 {
   font-family: myTitleFont;
   font-size: 80px;
+  text-align: left;
+}
+
+.hero {
+  width: 6em;
+  float: right;
 }
 
 .game-intro {
-    margin-top: 150px;
-  }
+    margin: 0px 450px;
+    margin-top: 80px;
+    background: rgba(255, 255, 255, 0.9);
+}
 
-.game-intro p {
+.p-left {
   font-size: 20px;
+  text-align: left;
+  font-weight: 600;
 }
 
 .list {
   list-style-type: none;
   font-size: 20px;
+  display: flex;
+	flex-direction: row;
+  align-items: baseline;
+  margin-top: 20px;
+}
+
+.card {
+  background: rgba(0, 0, 0, 0);
+  font-weight: 600;
+}
+
+.hor-list {
+  list-style-type: none;
+  align-items: baseline;
+}
+
+.ver-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
   text-align: center;
 }
 
 .icon {
-  width: 2.5em;
+  width: 2em;
 }
 
 .arrow-keys {
-  width: 8%;
+  width: 6em;
 }
 
 #start-btn {
@@ -37,17 +69,34 @@ h1 {
   font-family: myTitleFont;
 }
 
+.center {
+  text-align: center;
+}
+
+.game-board {
+  text-align: center;
+  margin-top: 30px;
+}
+
 #timer {
   font-family: myTitleFont; 
   font-size: 30px;
-  margin-top: 30px;
   margin-bottom: 20px;
-}
-
-.over {
-  font-family: gameOverFont;
 }
 
 canvas {
   background-image: url("../img/lab.jpg");
+}
+
+.shadow {
+  box-shadow: 10px 10px 5px grey;
+}
+
+.h1-center {
+  text-align: center;
+}
+
+.p-center {
+  font-size: 20px;
+  text-align: center;
 }

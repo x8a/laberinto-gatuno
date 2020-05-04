@@ -1,20 +1,35 @@
 function landingPage() {
     document.querySelector("body").innerHTML = `
-    <div class="game-intro">
-        <div>
-            <h1>LABERINTO GATUNO</h1>
-            <p>Our tired cat needs your help to get to the box. Only then can she find the rest she truly deserves.</p>
+    <div>
+        <div class="game-intro">
+            <img src="./img/hero.png" class="hero"/>
+            <h1>A MAZE-ING</h1>
+            <p class="p-left">Hurry up and get to the box to sleep!</p>
+            <div class="center">
+                <button id="start-btn" class="btn bg-dark text-white btn-lg">START</button>
+            </div>
             <ul class="list">
-            <li><img src="./img/shrimp.png" class="icon"/> --> Get 10 extra seconds</li>
-            <li><img src="./img/yarn-ball.png" class="icon"/> --> Lose 10 seconds</li>
+                <li>
+                    <div class="card border-0" style="width:250px;">
+                        <div class="card-body">
+                            <ul class="ver-list">
+                                <li><img src="./img/arrowKeys.png" alt="Arrow Keys" class="arrow-keys"/></li>
+                                <li><p class="card-text">Move with the arrow keys</p></li>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="card border-0" style="width: 250px;">
+                        <div class="card-body">
+                            <ul class="hor-list">
+                                <li><img src="./img/shrimp.png" class="icon"/> +10 seconds</li>
+                                <li><img src="./img/yarn-ball.png" class="icon"/> -10 seconds</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
             </ul>
-        </div>
-        <div>
-            <img src="./img/arrowKeys.png" alt="Arrow Keys" class="arrow-keys"/>
-        </div>
-        <div>
-            <button id="start-btn" class="btn bg-dark text-white btn-lg">START</button>
-        </div>
+        </div>        
     </div>
     `;
 
@@ -25,12 +40,14 @@ function landingPage() {
 
 function gameScreen() {
     document.querySelector("body").innerHTML = `
-    <div id="timer" class="btn btn-lg bg-danger text-white justify-content center">
-        TIME LEFT 00:30
-    </div>
+    <div class="game-board">
+        <div id="timer" class="btn btn-lg bg-danger text-white justify-content center">
+            TIME LEFT 00:30
+        </div>
+        <div>
+            <canvas id="canvas" width="570" height="570"></canvas>
+        </div>
     <div>
-        <canvas id="canvas" width="570" height="570"></canvas>
-    </div>
     `;
     const mainCanvas = document.querySelector('canvas');
     const myGame = new Game(mainCanvas);
@@ -100,9 +117,9 @@ function gameScreen() {
 
 function winnerScreen() {
     document.querySelector("body").innerHTML = `
-    <div class="game-intro">
-        <h1>WINNER</h1>
-        <img src="./img/boxNap.gif" alt="Cat in a box">
+    <div class="game-board">
+        <img class="shadow" src="./img/boxNap.gif" alt="Cat in a box">
+        <h1 class="h1-center">TIME TO SLEEP!</h1>
         <br>
         <br>
         <button id="start-btn" class="btn bg-dark text-white btn-lg">RESTART</button>
@@ -115,9 +132,9 @@ function winnerScreen() {
 
 function gameOverScreen() {
     document.querySelector("body").innerHTML = `
-    <div class="game-intro">
-        <h1 class="over">TIME'S UP</h1>
+    <div class="game-board">
         <img src="./img/salem.gif" alt="Salem smashing the piano">
+        <h1 class="h1-center">TIME'S UP!</h1>
         <br>
         <br>
         <button id="start-btn" class="btn bg-dark text-white btn-lg">RESTART</button>
