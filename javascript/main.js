@@ -3,10 +3,10 @@ function landingPage() {
     <div>
         <div class="game-intro">
             <img src="./img/hero.png" class="hero"/>
-            <h1>A MAZE-ING</h1>
-            <p class="p-left">Hurry up and get to the box to sleep!</p>
+            <h1 class="main-title">LABERINTO GATUNO</h1>
+            <p class="p-left">HURRY UP AND GET TO THE BOX TO SLEEP!</p>
             <div class="center">
-                <button id="start-btn" class="btn bg-dark text-white btn-lg">START</button>
+                <button id="start-btn" class="btn btn-lg">START</button>
             </div>
             <ul class="list">
                 <li>
@@ -14,7 +14,7 @@ function landingPage() {
                         <div class="card-body">
                             <ul class="ver-list">
                                 <li><img src="./img/arrowKeys.png" alt="Arrow Keys" class="arrow-keys"/></li>
-                                <li><p class="card-text">Move with the arrow keys</p></li>
+                                <li><p class="card-text">MOVE WITH THE ARROW KEYS</p></li>
                         </div>
                     </div>
                 </li>
@@ -22,8 +22,8 @@ function landingPage() {
                     <div class="card border-0" style="width: 250px;">
                         <div class="card-body">
                             <ul class="hor-list">
-                                <li><img src="./img/shrimp.png" class="icon"/> +10 seconds</li>
-                                <li><img src="./img/yarn-ball.png" class="icon"/> -10 seconds</li>
+                                <li><img src="./img/shrimp.png" class="icon"/>  + 10 SECONDS</li>
+                                <li><img src="./img/yarn-ball.png" class="icon"/> - 10 SECONDS</li>
                             </ul>
                         </div>
                     </div>
@@ -41,17 +41,21 @@ function landingPage() {
 function gameScreen() {
     document.querySelector("body").innerHTML = `
     <div class="game-board">
+        <audio autoplay loop id="volume">
+            <source src="./audio/song.mp3" type="audio/mpeg">
+        </audio>
         <div id="timer" class="btn btn-lg bg-danger text-white justify-content center">
-            TIME LEFT 00:30
+            TIME LEFT 00:45
         </div>
         <div>
             <canvas id="canvas" width="570" height="570"></canvas>
         </div>
     <div>
     `;
+    document.getElementById("volume").volume = 0.1;
     const mainCanvas = document.querySelector('canvas');
     const myGame = new Game(mainCanvas);
-    sec = 30;
+    sec = 45;
     myGame.startGame();
     
     function pressKey(event) {
@@ -118,13 +122,17 @@ function gameScreen() {
 function winnerScreen() {
     document.querySelector("body").innerHTML = `
     <div class="game-board">
+        <audio autoplay loop id="volume">
+            <source src="./audio/purr.wav" type="audio/wav">
+        </audio>
         <img class="shadow" src="./img/boxNap.gif" alt="Cat in a box">
-        <h1 class="h1-center">TIME TO SLEEP!</h1>
+        <h1 class="h1-center">CONGRATULATIONS!</h1>
+        <h2 class="h1-center">TIME TO SLEEP</h2>
         <br>
-        <br>
-        <button id="start-btn" class="btn bg-dark text-white btn-lg">RESTART</button>
+        <button id="start-btn" class="btn btn-lg">RESTART</button>
     </div>
     `;
+    document.getElementById("volume").volume = 0.3;
     document.getElementById('start-btn').onclick = () => {
         landingPage();
       };
@@ -133,13 +141,17 @@ function winnerScreen() {
 function gameOverScreen() {
     document.querySelector("body").innerHTML = `
     <div class="game-board">
+        <audio autoplay loop id="volume">
+            <source src="./audio/piano.mp3" type="audio/mpeg">
+        </audio>
         <img src="./img/salem.gif" alt="Salem smashing the piano">
-        <h1 class="h1-center">TIME'S UP!</h1>
+        <h1 class="h1-center">SORRY!</h1>
+        <h2 class="h1-center">TIME'S UP</h2>
         <br>
-        <br>
-        <button id="start-btn" class="btn bg-dark text-white btn-lg">RESTART</button>
+        <button id="start-btn" class="btn btn-lg">RESTART</button>
     </div>
     `;
+    document.getElementById("volume").volume = 0.1;
     document.getElementById('start-btn').onclick = () => {
         landingPage();
       };

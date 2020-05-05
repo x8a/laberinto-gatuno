@@ -8,9 +8,16 @@ h1 {
   text-align: left;
 }
 
+.main-title {
+  padding-left: 30px;
+  width: 50px;
+}
+
 .hero {
-  width: 6em;
+  width: 8em;
   float: right;
+  padding-right: 30px;
+  padding-top: 30px;
 }
 
 .game-intro {
@@ -20,9 +27,11 @@ h1 {
 }
 
 .p-left {
-  font-size: 20px;
+  font-size: 23px;
   text-align: left;
   font-weight: 600;
+  padding-left: 30px;
+  font-family: myTitleFont;
 }
 
 .list {
@@ -31,6 +40,7 @@ h1 {
   display: flex;
 	flex-direction: row;
   align-items: baseline;
+  justify-content: space-around;
   margin-top: 20px;
 }
 
@@ -42,6 +52,7 @@ h1 {
 .hor-list {
   list-style-type: none;
   align-items: baseline;
+  font-family: myTitleFont;
 }
 
 .ver-list {
@@ -52,6 +63,7 @@ h1 {
   align-items: center;
   align-content: center;
   text-align: center;
+  font-family: myTitleFont;
 }
 
 .icon {
@@ -67,6 +79,7 @@ h1 {
   width: 150px;
   font-size: 30px;
   font-family: myTitleFont;
+  background-color: #F7B500;
 }
 
 .center {
@@ -94,6 +107,7 @@ canvas {
 
 .h1-center {
   text-align: center;
+  font-family: myTitleFont; 
 }
 
 .p-center {
