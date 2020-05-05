@@ -1,4 +1,5 @@
 function landingPage() {
+    document.querySelector("body").style.backgroundImage = "url('./img/dots.png')";
     document.querySelector("body").innerHTML = `
     <div>
         <div class="game-intro">
@@ -39,13 +40,14 @@ function landingPage() {
 }
 
 function gameScreen() {
+    document.querySelector("body").style.backgroundImage = "none";
     document.querySelector("body").innerHTML = `
     <div class="game-board">
         <audio autoplay loop id="volume">
             <source src="./audio/song.mp3" type="audio/mpeg">
         </audio>
         <div id="timer" class="btn btn-lg bg-danger text-white justify-content center">
-            TIME LEFT 00:45
+            TIME LEFT 00:30
         </div>
         <div>
             <canvas id="canvas" width="570" height="570"></canvas>
@@ -55,7 +57,7 @@ function gameScreen() {
     document.getElementById("volume").volume = 0.1;
     const mainCanvas = document.querySelector('canvas');
     const myGame = new Game(mainCanvas);
-    sec = 45;
+    sec = 30;
     myGame.startGame();
     
     function pressKey(event) {
@@ -120,15 +122,14 @@ function gameScreen() {
 }
 
 function winnerScreen() {
+    document.querySelector("body").style.backgroundImage = "url('./img/boxNap.gif')";
     document.querySelector("body").innerHTML = `
     <div class="game-board">
         <audio autoplay loop id="volume">
             <source src="./audio/purr.wav" type="audio/wav">
         </audio>
-        <img class="shadow" src="./img/boxNap.gif" alt="Cat in a box">
-        <h1 class="h1-center">CONGRATULATIONS!</h1>
+        <h1 class="h1-center" id="success">CONGRATULATIONS!</h1>
         <h2 class="h1-center">TIME TO SLEEP</h2>
-        <br>
         <button id="start-btn" class="btn btn-lg">RESTART</button>
     </div>
     `;
@@ -139,15 +140,14 @@ function winnerScreen() {
 }
 
 function gameOverScreen() {
+    document.querySelector("body").style.backgroundImage = "url('./img/salem.gif')";
     document.querySelector("body").innerHTML = `
     <div class="game-board">
         <audio autoplay loop id="volume">
             <source src="./audio/piano.mp3" type="audio/mpeg">
         </audio>
-        <img src="./img/salem.gif" alt="Salem smashing the piano">
         <h1 class="h1-center">SORRY!</h1>
         <h2 class="h1-center">TIME'S UP</h2>
-        <br>
         <button id="start-btn" class="btn btn-lg">RESTART</button>
     </div>
     `;

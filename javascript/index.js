@@ -16,14 +16,18 @@ class Game {
     this.box = new Box();
     this.shrimp = new Shrimp(90, 30);
     this.shrimp2 = new Shrimp(30, 510);
+    this.shrimp3 = new Shrimp(330, 150);
     this.yarn = new Yarn(90, 330);
     this.yarn2 = new Yarn(300, 390);
+    this.yarn3 = new Yarn(510, 30);
 
     this.myShrimps.push(this.shrimp);
     this.myShrimps.push(this.shrimp2);
+    this.myShrimps.push(this.shrimp3);
   
     this.yarnBalls.push(this.yarn);
     this.yarnBalls.push(this.yarn2);
+    this.yarnBalls.push(this.yarn3);
 
     myCountdown = setInterval(counting, 1000);
 
